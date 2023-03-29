@@ -51,7 +51,12 @@ def number_of_hosts(cidr):
     return (1 << (32 - int(cidr))) - 2
 
 def number_of_subnets(cidr):
-    return (1 << (32 - int(cidr)))
+   if int(cidr) >= 24:
+       mask = 0x100 >> (int(cidr) - 24)
+   else:
+       mask = 0x100 >> (24 - int(cidr))
+
+   return int(0x100 / mask)
 
 def first_host(ip_add,netmask):
   num = [0,0,0,0]
@@ -63,10 +68,6 @@ def first_host(ip_add,netmask):
   return '.'.join(map(str, num))
 
 def main():
-  cidr=""
-  netmask=""
-  last=""
-  brodcast=""
   ip_address = input("Please enter an ip address with cidr or subnet mask: ")
   if validate_ip(ip_address.split("/")[0]) == False:
     print("Invalid address.")
