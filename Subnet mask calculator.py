@@ -52,11 +52,9 @@ def number_of_hosts(cidr):
 
 def number_of_subnets(cidr):
    if int(cidr) >= 24:
-       mask = 0x100 >> (int(cidr) - 24)
+       return = 0x100 >> (int(cidr) - 24)
    else:
-       mask = 0x100 >> (24 - int(cidr))
-
-   return int(0x100 / mask)
+       return 0x100 >> (24 - int(cidr))
 
 def first_host(ip_add,netmask):
   num = [0,0,0,0]
