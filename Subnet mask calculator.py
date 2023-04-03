@@ -52,7 +52,7 @@ def number_of_hosts(cidr):
 
 def number_of_subnets(cidr):
    if int(cidr) >= 24:
-       return = 0x100 >> (int(cidr) - 24)
+       return 0x100 >> (int(cidr) - 24)
    else:
        return 0x100 >> (24 - int(cidr))
 
